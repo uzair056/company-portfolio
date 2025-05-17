@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refenthic IT Solutions | Shaping Digital Realities</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-black: #0a0a0a;
+        --secondary-black: #1a1a1a;
+        --primary-purple: #6a00f4;
+        --secondary-purple: #8a2be2;
+        --accent-purple: #b57edc;
+        --text-light: #f8f9fa;
+        --text-gray: #adb5bd;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--primary-black);
+        color: var(--text-light);
+        overflow-x: hidden;
+      }
+
+      /* Navbar */
+      .navbar {
+        background-color: rgba(10, 10, 10, 0.9) !important;
+        backdrop-filter: blur(10px);
+        padding: 15px 0;
+        transition: all 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        padding: 10px 0;
+        box-shadow: 0 4px 20px rgba(106, 0, 244, 0.2);
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: var(--text-light) !important;
+      }
+
+      .navbar-brand span {
+        color: var(--primary-purple);
+      }
+
+      .nav-link {
+        color: var(--text-gray) !important;
+        margin: 0 10px;
+        font-weight: 500;
+        position: relative;
+      }
+
+      .nav-link:hover {
+        color: var(--text-light) !important;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--primary-purple);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .navbar-toggler {
+        border-color: var(--primary-purple) !important;
+      }
+
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28106, 0, 244, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 70% 30%,
+          rgba(106, 0, 244, 0.2) 0%,
+          rgba(10, 10, 10, 1) 70%
+        );
+        z-index: -1;
+      }
+
+      .hero-content {
+        max-width: 800px;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        background: linear-gradient(
+          90deg,
+          var(--text-light),
+          var(--accent-purple)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        color: var(--text-gray);
+        margin-bottom: 30px;
+      }
+
+      .hero-subtitle span {
+        color: var(--primary-purple);
+        font-weight: 600;
+      }
+
+      .btn-primary-custom {
+        background-color: var(--primary-purple);
+        border: none;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 30px;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary-custom:hover {
+        background-color: var(--secondary-purple);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(106, 0, 244, 0.3);
+      }
+
+      .btn-primary-custom::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          var(--primary-purple),
+          var(--accent-purple)
+        );
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .btn-primary-custom:hover::before {
+        opacity: 1;
+      }
+
+      .btn-outline-custom {
+        border: 2px solid var(--primary-purple);
+        background-color: transparent;
+        padding: 10px 28px;
+        font-weight: 600;
+        border-radius: 30px;
+        color: var(--primary-purple);
+        transition: all 0.3s ease;
+      }
+
+      .btn-outline-custom:hover {
+        background-color: var(--primary-purple);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(106, 0, 244, 0.3);
+      }
+
+      /* Floating Elements */
+      .floating-element {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          var(--primary-purple),
+          transparent 70%
+        );
+        opacity: 0.3;
+        filter: blur(20px);
+        z-index: -1;
+        animation: float 15s infinite ease-in-out;
+      }
+
+      .floating-element:nth-child(1) {
+        width: 300px;
+        height: 300px;
+        top: -100px;
+        left: -100px;
+        animation-delay: 0s;
+      }
+
+      .floating-element:nth-child(2) {
+        width: 200px;
+        height: 200px;
+        bottom: 50px;
+        right: 100px;
+        animation-delay: 2s;
+      }
+
+      .floating-element:nth-child(3) {
+        width: 150px;
+        height: 150px;
+        top: 200px;
+        right: -50px;
+        animation-delay: 4s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        25% {
+          transform: translate(50px, 50px);
+        }
+        50% {
+          transform: translate(0, 100px);
+        }
+        75% {
+          transform: translate(-50px, 50px);
+        }
+      }
+
+      /* About Section */
+      .section {
+        padding: 100px 0;
+        position: relative;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 50px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 50%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-purple), transparent);
+        border-radius: 2px;
+      }
+
+      .about-content {
+        display: flex;
+        align-items: center;
+      }
+
+      .about-text {
+        flex: 1;
+        padding-right: 30px;
+      }
+
+      .about-image {
+        flex: 1;
+        position: relative;
+      }
+
+      .about-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        transform: perspective(1000px) rotateY(-10deg);
+        transition: transform 0.5s ease;
+      }
+
+      .about-image:hover img {
+        transform: perspective(1000px) rotateY(0deg);
+      }
+
+      .about-image::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        width: 100%;
+        height: 100%;
+        border: 2px solid var(--primary-purple);
+        border-radius: 10px;
+        z-index: -1;
+        opacity: 0.5;
+        transition: all 0.5s ease;
+      }
+
+      .about-image:hover::before {
+        top: -10px;
+        left: -10px;
+        opacity: 0.8;
+      }
+
+      /* Services Section */
+      .services {
+        background-color: var(--secondary-black);
+      }
+
+      .service-card {
+        background-color: var(--primary-black);
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        border-left: 3px solid var(--primary-purple);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(106, 0, 244, 0.2);
+        border-left: 3px solid var(--accent-purple);
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        color: var(--primary-purple);
+        margin-bottom: 20px;
+      }
+
+      .service-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .service-description {
+        color: var(--text-gray);
+      }
+
+      /* Portfolio Section */
+      .portfolio-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .portfolio-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to top,
+          rgba(106, 0, 244, 0.8),
+          transparent
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .portfolio-item:hover .portfolio-overlay {
+        opacity: 1;
+      }
+
+      .portfolio-item:hover .portfolio-image {
+        transform: scale(1.1);
+      }
+
+      .portfolio-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+      }
+
+      .portfolio-category {
+        color: var(--text-gray);
+        transform: translateY(20px);
+        transition: transform 0.3s ease 0.1s;
+      }
+
+      .portfolio-item:hover .portfolio-title,
+      .portfolio-item:hover .portfolio-category {
+        transform: translateY(0);
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        background-color: var(--secondary-black);
+      }
+
+      .testimonial-card {
+        background-color: var(--primary-black);
+        border-radius: 10px;
+        padding: 30px;
+        margin: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 5rem;
+        color: var(--primary-purple);
+        opacity: 0.2;
+        font-family: Georgia, serif;
+        line-height: 1;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .author-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+        border: 2px solid var(--primary-purple);
+      }
+
+      .author-name {
+        font-weight: 600;
+      }
+
+      .author-position {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+      }
+
+      /* Contact Section */
+      .contact-form {
+        background-color: var(--secondary-black);
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .form-control {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: none;
+        border-bottom: 2px solid var(--text-gray);
+        border-radius: 0;
+        color: var(--text-light);
+        padding: 15px 0;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        background-color: transparent;
+        box-shadow: none;
+        border-bottom-color: var(--primary-purple);
+        color: var(--text-light);
+      }
+
+      .form-control::placeholder {
+        color: var(--text-gray);
+      }
+
+      textarea.form-control {
+        resize: none;
+      }
+
+      .contact-info {
+        padding-left: 50px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 30px;
+      }
+
+      .contact-icon {
+        font-size: 1.5rem;
+        color: var(--primary-purple);
+        margin-right: 20px;
+        margin-top: 5px;
+      }
+
+      .contact-details h4 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+
+      .contact-details p {
+        color: var(--text-gray);
+        margin-bottom: 0;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--secondary-black);
+        padding: 50px 0 20px;
+      }
+
+      .footer-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: inline-block;
+      }
+
+      .footer-logo span {
+        color: var(--primary-purple);
+      }
+
+      .footer-description {
+        color: var(--text-gray);
+        margin-bottom: 20px;
+      }
+
+      .social-links {
+        display: flex;
+        margin-bottom: 30px;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary-black);
+        color: var(--text-light);
+        margin-right: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        background-color: var(--primary-purple);
+        transform: translateY(-3px);
+      }
+
+      .footer-links h4 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-links h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--primary-purple);
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: var(--text-gray);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary-purple);
+        padding-left: 5px;
+      }
+
+      .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        margin-top: 30px;
+        text-align: center;
+        color: var(--text-gray);
+        font-size: 0.9rem;
+      }
+
+      /* Back to Top Button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-purple);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(106, 0, 244, 0.3);
+      }
+
+      .back-to-top.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top:hover {
+        background-color: var(--secondary-purple);
+        transform: translateY(-3px);
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .hero-title {
+          font-size: 2.8rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .about-content {
+          flex-direction: column;
+        }
+
+        .about-text {
+          padding-right: 0;
+          margin-bottom: 30px;
+        }
+
+        .contact-info {
+          padding-left: 0;
+          margin-top: 50px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .btn-primary-custom,
+        .btn-outline-custom {
+          padding: 10px 20px;
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-title {
+          font-size: 1.8rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+
+        .section {
+          padding: 60px 0;
+        }
+
+        .contact-form {
+          padding: 20px;
+        }
+      }
+
+      /* Platform Links Styles */
+      .social-media-platforms {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .platform {
+        background-color: var(--secondary-black);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border-left: 3px solid var(--primary-purple);
+      }
+
+      .platform:hover {
+        transform: translateX(5px);
+        box-shadow: 0 5px 15px rgba(106, 0, 244, 0.2);
+      }
+
+      .platform-link {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        color: var(--text-light);
+        text-decoration: none;
+      }
+
+      .platform-icon {
+        font-size: 1.2rem;
+        color: var(--primary-purple);
+        margin-right: 15px;
+        width: 25px;
+        text-align: center;
+      }
+
+      .platform-link span {
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+      }
+
+      .platform:hover .platform-link span {
+        color: var(--accent-purple);
+      }
+
+      /* Copyright text adjustment */
+      .copyright p:last-child {
+        margin-top: 5px;
+        font-size: 0.9rem;
+        color: var(--text-gray);
+      }
+
+      /* Stats Section */
+      .stats-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        height: 100%;
+      }
+
+      .stat-card {
+        background-color: var(--secondary-black);
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border-left: 3px solid var(--primary-purple);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(106, 0, 244, 0.2);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-purple);
+        margin-bottom: 10px;
+      }
+
+      .stat-title {
+        font-size: 1.1rem;
+        color: var(--text-gray);
+      }
+
+      .stat-icon {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        color: rgba(106, 0, 244, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Refenthic <span>ITSolutions</span></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <div class="hero-content animate__animated animate__fadeInUp">
+              <h1 class="hero-title">Shaping Digital Realities</h1>
+              <p class="hero-subtitle">
+                We craft exceptional <span>web experiences</span> and stunning
+                <span>designs</span> that elevate your brand
+              </p>
+              <div class="d-flex flex-wrap gap-3">
+                <a
+                  href="#contact"
+                  class="btn btn-primary-custom animate__animated animate__fadeInUp animate__delay-1s"
+                  >Get Started</a
+                >
+                <a
+                  href="#portfolio"
+                  class="btn btn-outline-custom animate__animated animate__fadeInUp animate__delay-1s"
+                  >View Work</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 d-none d-lg-block">
+            <div class="hero-image animate__animated animate__fadeInRight">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Digital Transformation"
+                class="img-fluid hero-img"
+                style="
+                  border-radius: 10px;
+                  box-shadow: 0 20px 40px rgba(106, 0, 244, 0.3);
+                "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title animate__animated animate__fadeIn">
+          About Us
+        </h2>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="about-text animate__animated animate__fadeInLeft">
+              <h3>Who We Are</h3>
+              <p>
+                Refenthic IT Solutions is a premier digital agency specializing
+                in web development and design services. Our team of passionate
+                creatives and developers work together to shape digital
+                realities that captivate audiences and drive results.
+              </p>
+              <p>
+                Founded in 2020, we've helped over 100 clients transform their
+                digital presence with custom solutions tailored to their unique
+                needs.
+              </p>
+              <div class="row mt-4">
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-3">
+                    <i
+                      class="fas fa-check-circle me-2"
+                      style="color: var(--primary-purple)"
+                    ></i>
+                    <span>Custom Web Development</span>
+                  </div>
+                  <div class="d-flex align-items-center mb-3">
+                    <i
+                      class="fas fa-check-circle me-2"
+                      style="color: var(--primary-purple)"
+                    ></i>
+                    <span>Responsive Design</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-3">
+                    <i
+                      class="fas fa-check-circle me-2"
+                      style="color: var(--primary-purple)"
+                    ></i>
+                    <span>Brand Identity</span>
+                  </div>
+                  <div class="d-flex align-items-center mb-3">
+                    <i
+                      class="fas fa-check-circle me-2"
+                      style="color: var(--primary-purple)"
+                    ></i>
+                    <span>SEO Optimization</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="stats-container animate__animated animate__fadeInRight">
+              <div class="stat-card">
+                <div class="stat-number" data-count="40">0</div>
+                <div class="stat-title">Satisfied Customers</div>
+                <div class="stat-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number" data-count="3">0</div>
+                <div class="stat-title">Years of Experience</div>
+                <div class="stat-icon">
+                  <i class="fas fa-calendar-alt"></i>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number" data-count="100">0</div>
+                <div class="stat-title">Projects Completed</div>
+                <div class="stat-icon">
+                  <i class="fas fa-project-diagram"></i>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number" data-count="24">0</div>
+                <div class="stat-title">Expert Team Members</div>
+                <div class="stat-icon">
+                  <i class="fas fa-user-tie"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+      <div class="container">
+        <h2 class="section-title animate__animated animate__fadeIn">
+          Our Services
+        </h2>
+        <p class="text-center mb-5 animate__animated animate__fadeIn">
+          We offer comprehensive digital solutions to help your business thrive
+          online.
+        </p>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3 class="service-title">Web Development</h3>
+              <p class="service-description">
+                Custom website development tailored to your business needs. From
+                simple landing pages to complex web applications.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-1s"
+          >
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-paint-brush"></i>
+              </div>
+              <h3 class="service-title">Web Design</h3>
+              <p class="service-description">
+                Beautiful, user-friendly designs that engage your audience and
+                reflect your brand identity.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-2s"
+          >
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <h3 class="service-title">Responsive Design</h3>
+              <p class="service-description">
+                Websites that look and function perfectly on all devices, from
+                desktops to smartphones.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-bullhorn"></i>
+              </div>
+              <h3 class="service-title">Branding</h3>
+              <p class="service-description">
+                Comprehensive branding solutions including logo design, color
+                schemes, and brand guidelines.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-1s"
+          >
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-palette"></i>
+              </div>
+              <h3 class="service-title">Graphic Design</h3>
+              <p class="service-description">
+                Stunning posters, business cards, social media graphics, and
+                other marketing materials.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-2s"
+          >
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-search"></i>
+              </div>
+              <h3 class="service-title">SEO Services</h3>
+              <p class="service-description">
+                Optimize your website to rank higher in search results and
+                attract more organic traffic.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section" id="portfolio">
+      <div class="container">
+        <h2 class="section-title animate__animated animate__fadeIn">
+          Our Portfolio
+        </h2>
+        <p class="text-center mb-5 animate__animated animate__fadeIn">
+          Explore our recent projects and see how we've helped our clients
+          succeed.
+        </p>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 animate__animated animate__fadeIn">
+            <div class="portfolio-item">
+              <img
+                src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80"
+                alt="Modern Web Design Project"
+                class="portfolio-image img-fluid"
+              />
+              <div class="portfolio-overlay">
+                <h4 class="portfolio-title">E-commerce Website</h4>
+                <p class="portfolio-category">Web Design & Development</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-md-6 col-lg-4 animate__animated animate__fadeIn animate__delay-1s"
+          >
+
+          
+            <div class="portfolio-item">
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.vVBSMCE0wsrsGR-nTcdk1gHaEo%26cb%3Diwp2%26pid%3DApi&f=1&ipt=b0a4c640cb909c4da5a3cf6dffd6cac3018278e3d3c01442d2e0cab1c326a98a&ipo=images"
+                alt="Project 2"
+                class="portfolio-image img-fluid"
+              />
+              <div class="portfolio-overlay">
+                <h4 class="portfolio-title">Brand Identity</h4>
+                <p class="portfolio-category">Logo & Branding</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-md-6 col-lg-4 animate__animated animate__fadeIn animate__delay-2s"
+          >
+            <div class="portfolio-item">
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F000%2F523%2F046%2Foriginal%2Fvector-mobile-app-development-concept.jpg&f=1&nofb=1&ipt=4379531ededebe17dd35a1be0cd245a40fdc2225c96a870f7071539219735d6d"
+                alt="Project 3"
+                class="portfolio-image img-fluid"
+              />
+              <div class="portfolio-overlay">
+                <h4 class="portfolio-title">Mobile Application</h4>
+                <p class="portfolio-category">App Development</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 animate__animated animate__fadeIn">
+            <div class="portfolio-item">
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.hashmicro.com%2Fid%2Fblog%2Fwp-content%2Fuploads%2F2022%2F09%2FDesain-tanpa-judul-32-1.png&f=1&nofb=1&ipt=f6ad0472c6e533c8a6cbc8e2187514e1079823b78e5f4a8af68e24f4144b6f7d"
+                alt="Project 4"
+                class="portfolio-image img-fluid"
+              />
+              <div class="portfolio-overlay">
+                <h4 class="portfolio-title">Marketing Campaign</h4>
+                <p class="portfolio-category">Graphic Design</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-md-6 col-lg-4 animate__animated animate__fadeIn animate__delay-1s"
+          >
+            <div class="portfolio-item">
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.locoia.com%2Fwp-content%2Fuploads%2FSaaS-1024x683.jpg&f=1&nofb=1&ipt=3093b064c73b69960269426d1c06b2aa028c8d4f5daccb4eb40b5e11e2c33fad"
+                alt="Project 5"
+                class="portfolio-image img-fluid"
+              />
+              <div class="portfolio-overlay">
+                <h4 class="portfolio-title">SaaS Platform</h4>
+                <p class="portfolio-category">Web Application</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-md-6 col-lg-4 animate__animated animate__fadeIn animate__delay-2s"
+          >
+            <div class="portfolio-item">
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fjklasercutting.co.th%2Fv2%2Fwp-content%2Fuploads%2F2021%2F12%2FCorporate-Identity.jpg&f=1&nofb=1&ipt=e755dba841b168575a6bf0e54057f762f794187aed45562bcbd1b40229ef8490"
+                alt="Project 6"
+                class="portfolio-image img-fluid"
+              />
+              <div class="portfolio-overlay">
+                <h4 class="portfolio-title">Corporate Identity</h4>
+                <p class="portfolio-category">Print Design</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+      <div class="container">
+        <h2 class="section-title animate__animated animate__fadeIn">
+          Client Testimonials
+        </h2>
+        <p class="text-center mb-5 animate__animated animate__fadeIn">
+          What our clients say about our work.
+        </p>
+        <div class="row">
+          <div class="col-lg-12">
+            <div
+              id="testimonialCarousel"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="testimonial-card">
+                    <p class="testimonial-text">
+                      Refenthic IT Solutions transformed our online presence
+                      completely. Their web development team delivered a site
+                      that not only looks amazing but has significantly
+                      increased our conversion rates.
+                    </p>
+                    <div class="testimonial-author">
+                      <img
+                        src="https://i.postimg.cc/6Tx63Kz4/uzair1.jpg"
+                        alt="Client 1"
+                        class="author-image"
+                      />
+                      <div>
+                        <h5 class="author-name">Muhammad Uzair</h5>
+                        <p class="author-position">CEO, Refenthic ITSolutions.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="testimonial-card">
+                    <p class="testimonial-text">
+                      The branding package created by Refenthic perfectly
+                      captured our company's essence. Their attention to detail
+                      and creative approach exceeded all our expectations.
+                    </p>
+                    <div class="testimonial-author">
+                      <img
+                        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.wallpapersden.com%2Fimage%2Fdownload%2Fsatoru-gojo-art_bGtobmuUmZqaraWkpJRmbmdlrWZlbWVnZWZu.jpg&f=1&nofb=1&ipt=5a63afd310367d426d6a02549742aa1fcf26ad0bd20eaa6ba48bcf06129a9b07"
+                        alt="Client 2"
+                        class="author-image"
+                      />
+                      <div>
+                        <h5 class="author-name">Satoro Gojo</h5>
+                        <p class="author-position">
+                          Customer Care
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="testimonial-card">
+                    <p class="testimonial-text">
+                      Working with Refenthic was a game-changer for our
+                      business. Their web design expertise helped us create a
+                      user experience that keeps our customers engaged and
+                      coming back.
+                    </p>
+                    <div class="testimonial-author">
+                      <img
+                        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmir-s3-cdn-cf.behance.net%2Fuser%2F276%2F457ba51489828969.6519a710a3529.jpg&f=1&nofb=1&ipt=422e86c7b8c36285f6228aa40ccffc621e6ece1ba604e35413ef2d9096998846"
+                        alt="Client 3"
+                        class="author-image"
+                      />
+                      <div>
+                        <h5 class="author-name">Abdullah Abid</h5>
+                        <p class="author-position">
+                          Founder, Scholarprob
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#testimonialCarousel"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#testimonialCarousel"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <div class="container">
+        <h2 class="section-title animate__animated animate__fadeIn">
+          Get In Touch
+        </h2>
+        <p class="text-center mb-5 animate__animated animate__fadeIn">
+          Ready to start your project? Reach out to us through any of these
+          channels.
+        </p>
+        <div class="row justify-content-center">
+          <div class="col-lg-8 animate__animated animate__fadeIn">
+            <div class="contact-info">
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="contact-item h-100">
+                    <div class="contact-icon">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                      <h4>Location</h4>
+                      <p>Comsats University Islamabas , Wah Campus</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="contact-item h-100">
+                    <div class="contact-icon">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                      <h4>Email</h4>
+                      <p>uzairkhan122399@gmail.com</p>
+                      <p>uzairkhan122499@gmail.com</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="contact-item h-100">
+                    <div class="contact-icon">
+                      <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                      <h4>Call Us</h4>
+                      <p>03350148753</p>
+                      <p>03205518075</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="contact-item h-100">
+                    <div class="contact-icon">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                      <h4>Working Hours</h4>
+                      <p>Monday - Friday: 9AM - 6PM</p>
+                      <p>Saturday: 10AM - 4PM</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <a href="#" class="footer-logo"
+              >Refenthic <span>ITSolutions</span></a
+            >
+            <p class="footer-description">
+              Shaping digital realities through innovative web solutions and
+              stunning designs that transform businesses.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-dribbble"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h4>Services</h4>
+              <ul>
+                <li><a href="#">Web Development</a></li>
+                <li><a href="#">Web Design</a></li>
+                <li><a href="#">Graphic Design</a></li>
+                <li><a href="#">Branding</a></li>
+                <li><a href="#">SEO</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="footer-links">
+              <h4>Connect With Us</h4>
+              <p>Join our community for the latest updates and insights.</p>
+              <div class="social-media-platforms mt-4">
+                <div class="platform mb-3">
+                  <a href="#" class="platform-link">
+                    <i class="fab fa-whatsapp platform-icon"></i>
+                    <span>Chat on WhatsApp</span>
+                  </a>
+                </div>
+                <div class="platform mb-3">
+                  <a href="#" class="platform-link">
+                    <i class="fab fa-telegram platform-icon"></i>
+                    <span>Join Telegram</span>
+                  </a>
+                </div>
+                <div class="platform">
+                  <a href="#" class="platform-link">
+                    <i class="fas fa-comment-dots platform-icon"></i>
+                    <span>Live Chat Support</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 Refenthic IT Solutions. All Rights Reserved.</p>
+          <p>Developed by Muhammad Uzair.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      // Navbar scroll effect
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+          $(".navbar").addClass("scrolled");
+        } else {
+          $(".navbar").removeClass("scrolled");
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      $('a[href*="#"]').on("click", function (e) {
+        e.preventDefault();
+
+        $("html, body").animate(
+          {
+            scrollTop: $($(this).attr("href")).offset().top - 70,
+          },
+          500,
+          "linear"
+        );
+      });
+
+      // Back to top button
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+          $(".back-to-top").addClass("active");
+        } else {
+          $(".back-to-top").removeClass("active");
+        }
+      });
+
+      // Animation on scroll
+      $(document).ready(function () {
+        $(window).scroll(function () {
+          $(".animate__animated").each(function () {
+            var position = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+
+            if (scroll + windowHeight > position) {
+              var animationClass = $(this)
+                .attr("class")
+                .split("animate__animated ")[1]
+                .split(" ")[0];
+              $(this).addClass("animate__" + animationClass);
+            }
+          });
+        });
+      });
+
+      // Form submission
+      $("#contactForm").submit(function (e) {
+        e.preventDefault();
+
+        // Get form values
+        var name = $("#name").val();
+        var email = $("#email").val();
+        var subject = $("#subject").val();
+        var message = $("#message").val();
+
+        // Here you would typically send the data to a server
+        // For demo purposes, we'll just show an alert
+        alert(
+          "Thank you, " +
+            name +
+            "! Your message has been sent. We will contact you soon."
+        );
+
+        // Reset form
+        $("#contactForm")[0].reset();
+      });
+
+      // Initialize carousel
+      var testimonialCarousel = new bootstrap.Carousel(
+        document.getElementById("testimonialCarousel"),
+        {
+          interval: 5000,
+          wrap: true,
+        }
+      );
+
+      // Counter animation for stats
+      function animateCounters() {
+        const counters = document.querySelectorAll(".stat-number");
+        const speed = 200;
+
+        counters.forEach((counter) => {
+          const target = +counter.getAttribute("data-count");
+          const count = +counter.innerText;
+          const increment = target / speed;
+
+          if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(animateCounters, 1);
+          } else {
+            counter.innerText = target + "+";
+          }
+        });
+      }
+
+      // Start counters when section is in view
+      window.addEventListener("scroll", function () {
+        const aboutSection = document.getElementById("about");
+        const position = aboutSection.getBoundingClientRect();
+
+        if (position.top < window.innerHeight && position.bottom >= 0) {
+          animateCounters();
+          // Remove event listener after first trigger
+          window.removeEventListener("scroll", this);
+        }
+      });
+    </script>
+  </body>
+</html>
